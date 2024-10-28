@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Belmont Station</title>
+    <!-- Bootstrap icons-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link
+      href="{{ url_for('static', filename='css/style.css') }}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{ url_for('static', filename='css/signIn.css') }}"
+      rel="stylesheet"
+    />
+    <script src="{{ url_for('static', filename='js/jquery-3.7.1.min.js') }}"></script>
+  </head>
+  <body>
+    <!-- Login Form Container -->
+    <div
+      class="d-flex justify-content-center align-items-center"
+      style="height: 100vh"
+    >
+      <!-- This will make the div take the full viewport height -->
+      <div class="card" style="width: 28rem; height: 450px">
+        <!-- You can set a specific width to the card if needed -->
+        <div class="card-body" style="margin-top: 35px">
+          <h2 class="card-title text-center mb-4">Welcome to Belmont</h2>
+          <div>
+            <div class="mb-3">
+              <label>User Name</label>
+              <input
+                type="text"
+                class="form-control compulsory"
+                id="txtUsername"
+                placeholder="User name"
+                style="height: 48px"
+                required
+              />
+            </div>
+            <!-- Password Field -->
+            <div class="mb-3">
+              <label>Password</label>
+              <input
+                type="password"
+                class="form-control compulsory"
+                id="txtPassword"
+                placeholder="Password"
+                required
+                style="height: 48px"
+              />
+            </div>
+            <!-- Login Button -->
+            <div class="d-grid">
+              <button id="btnLogin" class="btn btn-primary">Log in</button>
+            </div>
+          </div>
+          <div class="text-center mt-4">
+            Don’t have an account?
+            <button id="btnSignUp" class="btn btn-primary">Sign up</button>
+          </div>
+          <div
+            class="text-center mt-2"
+            id="messageRow"
+            style="display: none; position: relative; top: 10px"
+          >
+            <span id="messageText" class="alert"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
