@@ -1,0 +1,40 @@
+.navbar-nav,
+.nav-item {
+  color: #fff;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-item:hover .dropdown-menu {
+  display: block;
+}
+
+.nav-link.dropdown-toggle:hover,
+.nav-link.dropdown-toggle:focus {
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.user-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+  border: 2px solid #ffffff;
+}
+
+.user-icon-drowdown-menu {
+  min-width: 80px !important;
+  right: 0;
+}
+
+.user-icon-drowdown-item-logout {
+  text-align: center;
+}
+
+.user-detail-modal {
+  min-width: 990px;
+}

@@ -51,7 +51,7 @@ function onBtnSignUpClick() {
   }
 
   $.ajax({
-    url: "/register",
+    url: "/auth/register",
     type: "POST",
     contentType: "application/json",
     data: JSON.stringify({
@@ -77,9 +77,19 @@ function onBtnSignUpClick() {
       $("#messageRow").show().addClass("alert-danger");
       $("#messageText")
         .text("Registration failed: " + jsonResponse.message + "!")
-        .addClass("alert-danger");
+        .addClass("alert-danger padiingLeft-0");
+
+      clearAfterTimeout(3000);
     },
   });
+}
+
+function clearAfterTimeout(seconds) {
+  seconds = seconds || 3000;
+  setTimeout(function () {
+    $("#messageRow").hide().removeClass("alert-danger");
+    $("#messageText").text("").removeClass("alert-danger");
+  }, seconds);
 }
 
 function bindSignUpEvents() {

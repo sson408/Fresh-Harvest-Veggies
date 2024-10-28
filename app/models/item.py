@@ -12,3 +12,5 @@ class Item(db.Model):
         'polymorphic_identity': 'item', 
         'polymorphic_on': 'type'        
     }
+
+    orderLines = db.relationship('OrderLine', back_populates='item')

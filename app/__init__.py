@@ -16,8 +16,11 @@ def create_app():
     db.init_app(app)
     migrate.init_app(app, db)
 
-    from app.routes import main
-    app.register_blueprint(main)
+    from app.routes.view import views
+    app.register_blueprint(views)
+
+    from app.routes.auth import auth
+    app.register_blueprint(auth, url_prefix='/auth')
 
 
     from app.models import (Person, Customer, Staff, CorporateCustomer, 

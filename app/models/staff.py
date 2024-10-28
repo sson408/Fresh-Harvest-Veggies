@@ -9,5 +9,5 @@ class Staff(db.Model):
     
 
     __mapper_args__ = {
-        'polymorphic_identity': 'staff'
+        'polymorphic_identity': 2
     }

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Fresh Harvest Veggies</title>
+
+    <!-- Bootstrap icons-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link
+      href="{{ url_for('static', filename='css/style.css') }}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{ url_for('static', filename='css/loggedNavBar.css') }}"
+      rel="stylesheet"
+    />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="{{ url_for('static', filename='js/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/modal.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/loggedNavBar.js') }}"></script>
+    {% block head %} {% endblock %}
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-light-gray">
+      <div class="container-fluid" style="justify-content: end">
+        <!-- Check if user is logged in -->
+        {% if session.loggedin %}
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-toggle="dropdown"
+          >
+            <img
+              src="../../static/image/profile_icon.jpg"
+              class="user-avatar"
+              alt="User"
+            />
+          </a>
+          <div
+            class="dropdown-menu user-icon-drowdown-menu"
+            aria-labelledby="navbarDropdown"
+          >
+            <button
+              class="dropdown-item user-icon-drowdown-item-logout"
+              id="btnManageProfile"
+            >
+              Profile
+            </button>
+            <button
+              class="dropdown-item user-icon-drowdown-item-logout"
+              id="btnViewDashboard"
+            >
+              dashboard
+            </button>
+            <button
+              class="dropdown-item user-icon-drowdown-item-logout"
+              id="btnLogout"
+            >
+              Logout
+            </button>
+          </div>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <button id="btnLogin" class="btn btn-login" type="button">
+            Login
+          </button>
+        </li>
+        {% endif %}
+      </div>
+    </nav>
+
+    {% block content %}
+    <!-- Default content -->
+    {% endblock %}
+  </body>
+</html>

@@ -8,6 +8,8 @@ class Customer(db.Model):
     customerBalance = db.Column(db.Numeric(precision=10, scale=2))
     maxOwing = db.Column(db.Numeric(precision=10, scale=2))
 
+    orders = db.relationship('Order', back_populates='customer')
+
     __mapper_args__ = {
-        'polymorphic_identity': 'customer' 
+        'polymorphic_identity': 3
     }

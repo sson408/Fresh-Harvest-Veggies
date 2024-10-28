@@ -13,7 +13,7 @@ function onClickLogin() {
   }
 
   $.ajax({
-    url: "/login",
+    url: "/auth/login",
     type: "POST",
     contentType: "application/json",
     data: JSON.stringify({
@@ -42,8 +42,18 @@ function onClickLogin() {
       $("#messageText")
         .text("Login failed: " + JSON.parse(errorMessage).message + "!")
         .addClass("alert-danger");
+
+      clearAfterTimeout(3000);
     },
   });
+}
+
+function clearAfterTimeout(seconds) {
+  seconds = seconds || 3000;
+  setTimeout(function () {
+    $("#messageRow").hide().removeClass("alert-danger");
+    $("#messageText").text("").removeClass("alert-danger");
+  }, seconds);
 }
 
 function onClickSignUp() {

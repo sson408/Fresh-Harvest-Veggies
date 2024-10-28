@@ -9,5 +9,4 @@ class Order(db.Model):
     customerId = db.Column(db.Integer, db.ForeignKey('customer.id'))
     
     customer = db.relationship('Customer', back_populates='orders')
-    
-    orderItems = db.relationship('OrderItem', back_populates='order')
+    orderLines = db.relationship('OrderLine', back_populates='order')

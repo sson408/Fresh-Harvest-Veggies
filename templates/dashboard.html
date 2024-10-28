@@ -1,0 +1,71 @@
+{% extends "loggedNavBar.html" %} {% block head %}
+<link
+  href="{{ url_for('static', filename='css/dashboard.css') }}"
+  rel="stylesheet"
+/>
+<link
+  href="{{ url_for('static', filename='css/style.css') }}"
+  rel="stylesheet"
+/>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %} {% block content %}
+<header
+  class="py-4 header-container"
+  style="
+    background: url('static/image/dashboardMain.jpg') no-repeat center center /
+      cover;
+    height: 350px;
+    width: auto;
+  "
+></header>
+<div class="dashboard-container">
+  <h1 class="text-spacing">Welcome {{username}}!</h1>
+  <div class="container image-spacing">
+    <div class="row">
+      <!-- Common features visible to all roles -->
+      <div class="col-md-6 col-lg-2 mb-3">
+        <div class="card no-border" style="width: 80%; margin: auto">
+          <img
+            src="../static/image/dashboardVeggiesIcon.jpg"
+            class="img-fluid rounded-start mb-3"
+            alt="View Veggies"
+          />
+          <div class="card-body">
+            <button
+              id="btnViewVeggies"
+              class="btn btn-primary btn-lg"
+              data-placement="bottom"
+              title="View Veggies"
+            >
+              View
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features for staff, admin, and manager -->
+      {% if userRole in ['staff', 'administrator'] %}
+      <div class="col-md-6 col-lg-2 mb-3">
+        <div class="card no-border" style="width: 80%; margin: auto">
+          <img
+            src="../static/image/dashboardUserIcon.jpg"
+            class="img-fluid rounded-start mb-3"
+            alt="View Users"
+          />
+          <div class="card-body">
+            <button
+              id="btnViewUsers"
+              class="btn btn-primary btn-lg"
+              data-placement="bottom"
+              title="View Users information"
+            >
+              View
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {% endif %} {% endblock %}
+    </div>
+  </div>
+</div>

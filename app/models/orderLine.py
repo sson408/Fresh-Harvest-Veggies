@@ -8,5 +8,5 @@ class OrderLine(db.Model):
     quantity = db.Column(db.Integer, default=1)
     price = db.Column(db.Numeric(precision=10, scale=2))
 
-    order = db.relationship('Order', back_populates='item')
-    item = db.relationship('Item', back_populates='order')
+    order = db.relationship('Order', back_populates='orderLines')
+    item = db.relationship('Item', back_populates='orderLines')

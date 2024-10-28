@@ -9,5 +9,5 @@ class CorporateCustomer(Customer):
     minBalance = db.Column(db.Numeric(precision=10, scale=2))
 
     __mapper_args__ = {
-        'polymorphic_identity': 'corporateCustomer'
+        'polymorphic_identity': 4
     }
