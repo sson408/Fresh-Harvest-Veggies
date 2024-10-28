@@ -1,0 +1,6 @@
+body {
+  background-color: #f0f2f5; /* Light grey background color */
+}
+.compulsory {
+  border-color: #dc3545 !important;
+}
