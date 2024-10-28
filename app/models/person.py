@@ -18,12 +18,12 @@ class Person(db.Model):
         'polymorphic_on': 'roleId'
     }
 
-    def __init__(self, firstName, lastName, username, password, typeId, phoneNumber, email):
+    def __init__(self, firstName, lastName, username, password, roleId, phoneNumber, email):
         self.__firstName = firstName
         self.__lastName = lastName
         self.__username = username
         self.__password = password
-        self.__typeId = typeId
+        self.__roleId = roleId
         self.__phoneNumber = phoneNumber
         self.__email = email
 

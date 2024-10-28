@@ -20,7 +20,10 @@ def create_app():
     app.register_blueprint(main)
 
 
-    from app.models import (Person)
+    from app.models import (Person, Customer, Staff, CorporateCustomer, 
+        Payment, CreditCardPayment, DebitCardPayment,
+        Item, Veggie, WeightedVeggie, PackVeggie,
+        UnitPriceVeggie, Order, OrderLine, PremadeBox)
 
 
     return app
