@@ -1,16 +1,20 @@
 from app import db
 from .item import Item
 
-class Veggie(db.Model):
-    __tablename__ = 'veggie'
-    id = db.Column(db.Integer, db.ForeignKey('item.id'), primary_key=True)
-    type = db.Column(db.String(50))
-    
+class Veggie(Item):
+   
     __mapper_args__ = {
         'polymorphic_identity': 'veggie',
-        'polymorphic_on': 'type'
     }
 
+    def __init__(self, name):
+        super().__init__(name, )
+        self.type = 'veggie'  
+        self.name = name
+  
+
+    def __str__(self):
+        return f"{self.name}"
 
 
 

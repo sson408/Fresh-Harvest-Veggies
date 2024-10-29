@@ -1,6 +1,6 @@
 from flask import jsonify, session
 from app import db
-from .enum import userRole
+from .enum import userRole, department
 from flask_hashing import Hashing
 from sqlalchemy.exc import SQLAlchemyError
 hashing = Hashing()
@@ -15,13 +15,23 @@ class Person(db.Model):
     roleId = db.Column(db.Integer)
     phoneNumber = db.Column(db.String(100))
     email = db.Column(db.String(100))
+    dateJoined = db.Column(db.Date)
+    departmentId = db.Column(db.Integer)
+    discountRate = db.Column(db.Numeric(precision=10, scale=2))
+    maxCredit = db.Column(db.Numeric(precision=10, scale=2))
+    minBalance = db.Column(db.Numeric(precision=10, scale=2))
+    customerAddress = db.Column(db.String(500))
+    customerBalance = db.Column(db.Numeric(precision=10, scale=2))
+    maxOwing = db.Column(db.Numeric(precision=10, scale=2))
 
     __mapper_args__ = {
         'polymorphic_identity': 1,
         'polymorphic_on': 'roleId'
     }
 
-    def __init__(self, firstName, lastName, username, password, roleId, phoneNumber, email):
+    def __init__(self, username, password, roleId, firstName = None, lastName = None, phoneNumber = None, email = None,
+                 dateJoined = None, departmentId = None, discountRate = None, maxCredit = None, minBalance = None,
+                customerAddress = None, customerBalance = None, maxOwing = None):
         self.firstName = firstName
         self.lastName = lastName
         self.username = username
@@ -30,6 +40,16 @@ class Person(db.Model):
         self.userRole = userRole(roleId).name if roleId else ""
         self.phoneNumber = phoneNumber
         self.email = email
+        self.dateJoined = dateJoined
+        self.dateJoinedDisplay = dateJoined.strftime('%Y-%m-%d') if dateJoined else ""
+        self.departmentId = departmentId
+        self.departmentName = department(departmentId).name if departmentId else ""
+        self.discountRate = discountRate
+        self.maxCredit = maxCredit
+        self.minBalance = minBalance
+        self.customerAddress = customerAddress
+        self.customerBalance = customerBalance
+
 
 
     def toDict(self):
@@ -41,7 +61,15 @@ class Person(db.Model):
             'roleId': self.roleId,
             'userRole':userRole(self.roleId).name if self.roleId else "",
             'phoneNumber': self.phoneNumber,
-            'email': self.email
+            'email': self.email,
+            'dateJoined': self.dateJoined.strftime('%Y-%m-%d') if self.dateJoined else "",
+            'departmentId': self.departmentId,
+            'departmentName': department(self.departmentId).name if self.departmentId else "",
+            'discountRate': self.discountRate,
+            'maxCredit': self.maxCredit,
+            'minBalance': self.minBalance,
+            'customerAddress': self.customerAddress,
+            'customerBalance': self.customerBalance
         }
     @classmethod
     def register(cls, username, password):
