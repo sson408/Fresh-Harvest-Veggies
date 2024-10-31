@@ -71,6 +71,8 @@ class Person(db.Model):
             'customerAddress': self.customerAddress,
             'customerBalance': self.customerBalance
         }
+    
+    
     @classmethod
     def register(cls, username, password):
         try:

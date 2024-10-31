@@ -1,3 +1,5 @@
+from operator import not_
+from flask import jsonify
 from app import db
 
 class Item(db.Model):
@@ -20,6 +22,7 @@ class Item(db.Model):
     }
 
     orderLines = db.relationship('OrderLine', back_populates='item')
+    premadeBoxItems = db.relationship('PremadeBoxItem', back_populates='item', foreign_keys='PremadeBoxItem.itemId')
 
 
     def __init__(self, name, price = None, stock = None, type = None, weight=None, pricePerKilo=None, quantity=None, pricePerUnit=None, pricePerPack=None, size=None):
@@ -40,15 +43,36 @@ class Item(db.Model):
             'id': self.id,
             'name': self.name,
             'price': self.price,
+            'priceDisplay': f'${self.price:.2f}' if self.price else "",
             'stock': self.stock,
             'type': self.type,
             'weight': self.weight,
             'pricePerKilo': self.pricePerKilo,
+            'pricePerKiloDisplay': f'${self.pricePerKilo:.2f}' if self.pricePerKilo else "",
             'quantity': self.quantity,
             'pricePerUnit': self.pricePerUnit,
+            'pricePerUnitDisplay': f'${self.pricePerUnit:.2f}' if self.pricePerUnit else "",
             'pricePerPack': self.pricePerPack,
+            'pricePerPackDisplay': f'${self.pricePerPack:.2f}' if self.pricePerPack else "",
             'size': self.size
         }
     
+    @classmethod
+    def listAllVeges(cls, filterWord):
+        try:
+            dataList = []
+            if filterWord:
+                word = filterWord.lower()
+                dataList = cls.query.filter(
+                    cls.name.like(f'%{word}%')
+                ).filter(Item.type != 'premade_box').all()
+            else:
+                dataList = cls.query.filter(Item.type != 'premade_box').all()
+
+            return jsonify({"items": [data.toDict() for data in dataList]}), 200
+        except Exception as e:
+            print(e)
+            return jsonify({'message': 'An error occurred: ' + str(e)}), 500
+
     def __str__(self):
         return f'{self.name}'

@@ -6,19 +6,19 @@ function onViewDashboard() {
   window.location.href = "/dashboard";
 }
 
-function btnManageProfile() {
-  loadAndShowUserProfileModal(0);
-}
+// function btnManageProfile() {
+//   loadAndShowUserProfileModal(0);
+// }
 
-function loadAndShowUserProfileModal(userId, isNewUser) {
-  loadAndShowModal("/modalUserProfile", "#userProfileModal", {
-    selectedUserId: userId,
-    isNewUser: isNewUser,
-  });
-}
+// function loadAndShowUserProfileModal(userId, isNewUser) {
+//   loadAndShowModal("/modalUserProfile", "#userProfileModal", {
+//     selectedUserId: userId,
+//     isNewUser: isNewUser,
+//   });
+// }
 function onClickLogout() {
   $.ajax({
-    url: "/logout",
+    url: "/auth/logout",
     type: "POST",
     contentType: "application/json",
     success: function (response) {
@@ -49,12 +49,12 @@ function bindNavBarEvents() {
   //console.log("Binding bar events");
   $("#btnLogin").on("click", onClickLogin);
   $("#btnLogout").on("click", onClickLogout);
-  $("#btnManageProfile").on("click", btnManageProfile);
+  //$("#btnManageProfile").on("click", btnManageProfile);
   $("#btnViewDashboard").on("click", onViewDashboard);
   $("#checkOut").on("click", onClickCheckOut);
 }
 
 $(document).ready(function () {
   bindNavBarEvents();
-  showShoppingCartDetails();
+  //showShoppingCartDetails();
 });

@@ -13,3 +13,4 @@ from .unitPriceVeggie import UnitPriceVeggie
 from .order import Order
 from .orderLine import OrderLine
 from .premadeBox import PremadeBox
+from .premadeBoxItem import PremadeBoxItem

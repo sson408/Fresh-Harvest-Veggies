@@ -42,7 +42,25 @@
           </div>
         </div>
       </div>
-
+      <div class="col-md-6 col-lg-2 mb-3">
+        <div class="card no-border" style="width: 80%; margin: auto">
+          <img
+            src="../static/image/dashboardOrdersIcon.jpg"
+            class="img-fluid rounded-start mb-3"
+            alt="View/Edit Orders"
+          />
+          <div class="card-body">
+            <button
+              id="btnViewOrders"
+              class="btn btn-primary btn-lg"
+              data-placement="bottom"
+              title="View/Edit Orders"
+            >
+              View
+            </button>
+          </div>
+        </div>
+      </div>
       <!-- Features for staff, admin, and manager -->
       {% if userRole in ['staff', 'administrator'] %}
       <div class="col-md-6 col-lg-2 mb-3">
@@ -50,14 +68,14 @@
           <img
             src="../static/image/dashboardUserIcon.jpg"
             class="img-fluid rounded-start mb-3"
-            alt="View Users"
+            alt="View Customers"
           />
           <div class="card-body">
             <button
-              id="btnViewUsers"
+              id="btnViewCustomers"
               class="btn btn-primary btn-lg"
               data-placement="bottom"
-              title="View Users information"
+              title="View Customers information"
             >
               View
             </button>

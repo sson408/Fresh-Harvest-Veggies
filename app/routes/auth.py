@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, session
 from app.models.person import Person
 
 # Blueprint for auth routes
@@ -26,3 +26,14 @@ def login():
         return response, status_code
     except Exception as e:
         return jsonify({'message': 'An error occurred: ' + str(e)}), 500
+
+
+@auth.route('/logout', methods=['POST'])
+def logout():
+    # Remove session data
+    session.pop('loggedin', None)
+    session.pop('userId', None)
+    session.pop('username', None)
+    session.pop('userRole', None)
+    
+    return jsonify({'message': 'Logout successful'}), 200

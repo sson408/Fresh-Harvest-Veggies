@@ -1,0 +1,28 @@
+{% extends "loggedNavBar.html" %} {% block head %}
+<link
+  href="{{ url_for('static', filename='css/itemList.css') }}"
+  rel="stylesheet"
+/>
+<script src="{{ url_for('static', filename='js/normalTable.js') }}"></script>
+<script src="{{ url_for('static', filename='js/modal.js') }}"></script>
+<script src="{{ url_for('static', filename='js/itemList.js') }}"></script>
+{% endblock %} {% block content %}
+<div class="dashboard-container" id="itemPageOutDiv">
+  <div>
+    <h1>Vege List</h1>
+    <input
+      type="text"
+      id="txtSearchInput"
+      placeholder="Search data..."
+      style="width: calc(100% - 100px); margin-left: 10px"
+    />
+    <button id="btnSearch" class="btn btn-primary">Search</button>
+    <table class="table" id="itemTable"></table>
+  </div>
+  <div>
+    <h1>Premade Box List</h1>
+    <div id="premadeBoxDiv"></div>
+  </div>
+</div>
+
+{% endblock %}

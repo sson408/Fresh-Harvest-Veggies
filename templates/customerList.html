@@ -1,0 +1,21 @@
+{% extends "loggedNavBar.html" %} {% block head %}
+<link
+  href="{{ url_for('static', filename='css/allUsers.css') }}"
+  rel="stylesheet"
+/>
+<script src="{{ url_for('static', filename='js/normalTable.js') }}"></script>
+<script src="{{ url_for('static', filename='js/modal.js') }}"></script>
+<script src="{{ url_for('static', filename='js/customerList.js') }}"></script>
+{% endblock %} {% block content %}
+<div class="dashboard-container" id="userPageOutDiv">
+  <h1>customer List</h1>
+  <input
+    type="text"
+    id="txtSearchInput"
+    placeholder="Search users..."
+    style="width: calc(100% - 100px); margin-left: 10px"
+  />
+  <button id="btnSearch" class="btn btn-primary">Search</button>
+  <table class="table" id="userTable"></table>
+</div>
+{% endblock %}
